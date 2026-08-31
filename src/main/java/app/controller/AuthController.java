@@ -7,18 +7,18 @@ import app.services.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Map;
 
 /**
- * Simple auth — no JWT, no tokens.
- * Just signup and login. Returns the userId directly.
+ * Simple auth — no JWT, no tokens. Just signup and login. Returns the userId
+ * directly.
  *
- * ⚠️ THIS IS INTENTIONALLY VULNERABLE for teaching purposes!
- * The server trusts the client to send the correct userId.
+ * ⚠️ THIS IS INTENTIONALLY VULNERABLE for teaching purposes! The server trusts
+ * the client to send the correct userId.
  */
 @RestController
 @RequestMapping("/api/auth")
+@CrossOrigin("*")
 public class AuthController {
 
     private final UserService userService;
@@ -27,7 +27,9 @@ public class AuthController {
         this.userService = userService;
     }
 
-    /** Create a new account with 100 starting balance. */
+    /**
+     * Create a new account with 100 starting balance.
+     */
     @PostMapping("/signup")
     public ResponseEntity<?> signup(@Valid @RequestBody SignupRequest request) {
         try {
@@ -42,7 +44,9 @@ public class AuthController {
         }
     }
 
-    /** Log in with email + password. Returns user info including userId. */
+    /**
+     * Log in with email + password. Returns user info including userId.
+     */
     @PostMapping("/login")
     public ResponseEntity<?> login(@Valid @RequestBody LoginRequest request) {
         try {
