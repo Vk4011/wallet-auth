@@ -1,4 +1,4 @@
-const API_BASE = '/api';
+const API_BASE = 'https://wallet-auth-rijd.onrender.com/api';
 
 function getUserId() {
   return localStorage.getItem('userId');
